@@ -1,8 +1,8 @@
-package io.kenji.sample.client
+package io.kenji.sample.client.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.runn_dev.socketsample.R
+import io.kenji.sample.client.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
