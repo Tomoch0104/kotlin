@@ -19,7 +19,32 @@ public InputStream getInputStream() throws IOException
   - FragmentはFragmentのなかにFragmentを持つことができる
 
 > ## MutableLiveData
+双方向バインディングをする際に
 > ## receivedMessageLiveData.postValue()
+setValueはUIスレッドで呼び出さないといけない（postValuse）を使う．
+
+### observavleFieldとLiveDataの違い
+- ObservableFieldは，値が**変更された時**に通知を行う
+- LiveDataは，値が**変更されていなくても設定されれば**通知を行う
+
+```kotlin
+val observableFld = ObservableField<Int>()
+observableFld.set(5)
+observableFld.set(5)
+observableFld.set(5) // 最初の1回しか通知されない(=onChangedは呼ばれない)
+
+val liveData = MutableLiveData<Int>()
+liveData.postValue(5)
+liveData.postValue(5)
+liveData.postValue(5) // 3回とも通知される(=onChangedが呼ばれる)
+```
+このことを知っておかないと，以下のようなリスクがある
+
+- ムダな画面の更新が発生する
+- TwoWayバインディングを何も考えずに作ると無限ループで死ぬ
+
+
+
 > ## socketClient.receivedData
 ### observeForever
 ### removeObserver
