@@ -43,8 +43,6 @@ liveData.postValue(5) // 3回とも通知される(=onChangedが呼ばれる)
 - ムダな画面の更新が発生する
 - TwoWayバインディングを何も考えずに作ると無限ループで死ぬ
 
-
-
 > ## socketClient.receivedData
 ### observeForever
 ### removeObserver
